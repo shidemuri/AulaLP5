@@ -4,7 +4,11 @@
  */
 package tools;
 
+import java.util.Date;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -19,7 +23,32 @@ public class Util {
     }
     public static void limpar(JComponent ... componentes){
         for (JComponent componente : componentes) {
-            ((JTextField) componente).setText("");
+            if(componente instanceof JTextField){
+                ((JTextField) componente).setText("");
+            }
+            if(componente instanceof JComboBox){
+                ((JComboBox) componente).setSelectedIndex(-1 );
+            }
+            if(componente instanceof JCheckBox){
+                ((JCheckBox) componente).setSelected(false);
+            }
         }
+    }
+    public static void mensagem(String mes) {
+        JOptionPane.showMessageDialog(null, mes);
+    }
+    public static boolean perguntar(String mes) {
+        JOptionPane.showConfirmDialog(null,mes);
+        return true;
+    }
+    public static int strToInt(String str){
+        return Integer.valueOf(str);
+    }
+    
+    public static double strToDouble(String str) {
+        return Double.valueOf(str);
+    }
+    public static Date strToDate(String str) {
+        return new Date(str);
     }
 }
