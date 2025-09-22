@@ -51,4 +51,13 @@ public class Util {
     public static Date strToDate(String str) {
         return new Date(str);
     }
+    public static String intToStr(int num) {
+        return String.valueOf(num);
+    }
+    public static String doubleToStr(double num) {
+        return "";
+    }
+    public static String dateToStr(Date num) {
+        return "";
+    }
 }
