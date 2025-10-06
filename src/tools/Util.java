@@ -4,7 +4,11 @@
  */
 package tools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -38,7 +42,7 @@ public class Util {
         JOptionPane.showMessageDialog(null, mes);
     }
     public static boolean perguntar(String mes) {
-        JOptionPane.showConfirmDialog(null,mes);
+        JOptionPane.showConfirmDialog(null,mes, "Perguntar", JOptionPane.YES_NO_OPTION);
         return true;
     }
     public static int strToInt(String str){
@@ -49,7 +53,13 @@ public class Util {
         return Double.valueOf(str);
     }
     public static Date strToDate(String str) {
-        return new Date(str);
+        SimpleDateFormat dateNascFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return dateNascFormat.parse(str);
+        } catch (ParseException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     public static String intToStr(int num) {
         return String.valueOf(num);

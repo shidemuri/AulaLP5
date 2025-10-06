@@ -149,6 +149,11 @@ public class Clientes  implements java.io.Serializable {
     public void setSexo(int sexo) {
         this.sexo = sexo;
     }
+    @Override
+    
+    public String toString() {
+        return this.nome;
+    }
 
 
 

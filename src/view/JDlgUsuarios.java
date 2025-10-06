@@ -277,7 +277,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         Util.habilitar(true, jFmtDataDeNascimento, jTxtApelido, jTxtCodigo, jTxtNome, jCboNivel, jPwfSenha, jFmtCpf, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnPesquisar);
         Util.limpar(jCboNivel, jChbAtivo, jFmtCpf, jFmtDataDeNascimento, jPwfSenha, jTxtApelido, jTxtCodigo, jTxtNome);
-
+        jTxtCodigo.grabFocus();
 
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -285,6 +285,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         incluir = false;
         Util.habilitar(true, jFmtDataDeNascimento, jTxtApelido, jTxtCodigo, jTxtNome, jCboNivel, jPwfSenha, jFmtCpf, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnPesquisar);
+        jTxtNome.grabFocus();
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
