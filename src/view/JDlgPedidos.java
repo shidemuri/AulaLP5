@@ -8,6 +8,7 @@ import bean.Clientes;
 import bean.Vendedor;
 import bean.Pedidos;
 import dao.ClientesDAO;
+import dao.VendedorDAO;
 import java.util.List;
 import tools.Util;
 
@@ -30,7 +31,11 @@ public class JDlgPedidos extends javax.swing.JDialog {
         List lista = (List) clientesDAO.listAll();
         for (int i = 0; i < lista.size(); i++) {
             jCboClientes.addItem((Clientes) lista.get(i));
-            
+        }
+        VendedorDAO vendedorDAO = new VendedorDAO();
+        List lista2 = (List) vendedorDAO.listAll();
+        for (int i = 0; i < lista2.size(); i++) {
+            jCboVendedor.addItem((Vendedor) lista2.get(i));
         }
     }
     
@@ -39,6 +44,14 @@ public class JDlgPedidos extends javax.swing.JDialog {
         pedidos.setClientes((Clientes) jCboClientes.getSelectedItem());
         pedidos.setVendedor((Vendedor) jCboVendedor.getSelectedItem());
         return pedidos;
+    }
+    
+    public void beanView(Pedidos pedidos) {
+        jCboClientes.setSelectedItem(pedidos.getClientes());
+        jCboVendedor.setSelectedItem(pedidos.getVendedor());
+        jFmtData.setText(Util.dateToStr(pedidos.getData()));
+        jTxtCodigo.setText(Util.intToStr(pedidos.getIdpedidos()));
+        jTxtTotal.setText(Util.doubleToStr(pedidos.getTotal()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,7 +80,7 @@ public class JDlgPedidos extends javax.swing.JDialog {
         jCboClientes = new javax.swing.JComboBox<Clientes>();
         jTxtCodigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jCboVendedor = new javax.swing.JComboBox<>();
+        jCboVendedor = new javax.swing.JComboBox<Vendedor>();
         jLabel5 = new javax.swing.JLabel();
         jTxtTotal = new javax.swing.JTextField();
         jFmtData = new javax.swing.JFormattedTextField();
@@ -179,8 +192,6 @@ public class JDlgPedidos extends javax.swing.JDialog {
         jTxtCodigo.setText("jTextField1");
 
         jLabel4.setText("Vendedor");
-
-        jCboVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Total");
 
@@ -564,7 +575,7 @@ public class JDlgPedidos extends javax.swing.JDialog {
     private javax.swing.JButton jBtnPesquisar1;
     private javax.swing.JButton jBtnPesquisar2;
     private javax.swing.JComboBox<Clientes> jCboClientes;
-    private javax.swing.JComboBox<String> jCboVendedor;
+    private javax.swing.JComboBox<Vendedor> jCboVendedor;
     private javax.swing.JFormattedTextField jFmtData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

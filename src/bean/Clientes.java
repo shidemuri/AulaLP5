@@ -150,12 +150,18 @@ public class Clientes  implements java.io.Serializable {
         this.sexo = sexo;
     }
     @Override
-    
     public String toString() {
         return this.nome;
     }
 
-
+    @Override
+    public boolean equals(Object object) {
+        if(object instanceof Clientes) {
+            Clientes cliente = (Clientes) object;
+            if(this.getIdclientes() == cliente.getIdclientes()) return true;
+        }
+        return false;
+    }
 
 
 
